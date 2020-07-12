@@ -12,6 +12,7 @@ class CCS811Component : public PollingComponent, public i2c::I2CDevice {
  public:
   void set_co2(sensor::Sensor *co2) { co2_ = co2; }
   void set_tvoc(sensor::Sensor *tvoc) { tvoc_ = tvoc; }
+  void set_baseline_data(sensor::Sensor *baseline_data) { baseline_data_ = baseline_data; }
   void set_baseline(uint16_t baseline) { baseline_ = baseline; }
   void set_humidity(sensor::Sensor *humidity) { humidity_ = humidity; }
   void set_temperature(sensor::Sensor *temperature) { temperature_ = temperature; }
@@ -48,6 +49,8 @@ class CCS811Component : public PollingComponent, public i2c::I2CDevice {
   sensor::Sensor *humidity_{nullptr};
   /// Input sensor for temperature reading.
   sensor::Sensor *temperature_{nullptr};
+  /// Input sensor for baseline reading.
+  sensor::Sensor *baseline_data_{nullptr};
 };
 
 }  // namespace ccs811

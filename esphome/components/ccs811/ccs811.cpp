@@ -72,6 +72,7 @@ void CCS811Component::update() {
   uint16_t baseline = 0;
   if (baseline_data.has_value()) {
     baseline = encode_uint16((*baseline_data)[0], (*baseline_data)[1]);
+    this->baseline_data_->publish_state(encode_uint16((*baseline_data)[1], (*baseline_data)[0]));
   }
 
   ESP_LOGD(TAG, "Got co2=%u ppm, tvoc=%u ppb, baseline=0x%04X", co2, tvoc, baseline);
